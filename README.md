@@ -1,1 +1,1 @@
-# BoPe-Steganogrphy
+# BoPe-Steganography
