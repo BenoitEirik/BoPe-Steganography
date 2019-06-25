@@ -8,8 +8,8 @@
 BoPe is a cross-platform steganography software (Linux, Windows & MacOS). It is intended for all audiences wishing to store digital information in an image. Currently, only BMP files are supported.
 This project is basically a work done in engineering school that I want to improve. Steganography is an uncommon but powerful practice that I would like to share with the most curious.
 
-# Preview
-<img src="https://user-images.githubusercontent.com/33329690/60121360-2a6ff100-9783-11e9-891c-fa492edf5c4f.png">
+# Prototype
+<img src="https://user-images.githubusercontent.com/33329690/60122422-7885f400-9785-11e9-9616-828bdd2eeb6c.png">
 
 
 # My goal
