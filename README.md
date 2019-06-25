@@ -9,7 +9,7 @@ BoPe is a cross-platform steganography software (Linux, Windows & MacOS). It is 
 This project is basically a work done in engineering school that I want to improve. Steganography is an uncommon but powerful practice that I would like to share with the most curious.
 
 # Preview
-<img src="https://user-images.githubusercontent.com/33329690/60121360-2a6ff100-9783-11e9-891c-fa492edf5c4f.png" width="400">
+<img src="https://user-images.githubusercontent.com/33329690/60121360-2a6ff100-9783-11e9-891c-fa492edf5c4f.png">
 
 
 # My goal
