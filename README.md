@@ -8,6 +8,7 @@ This project is basically a work done in engineering school that I want to impro
 # Programming language and libraries
 - The C language and its standard library (C18 version)
 - The SDL Library (GUI)
+- CMake (MakeFile generator)
 
 # Contribute to the project
 Welcome to those who want to contribute. I am currently alone in carrying out my project.
