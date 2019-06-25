@@ -17,7 +17,7 @@ My goal is to make the art of steganography accessible to everyone and thus no l
 - CMake (MakeFile generator)
 
 # Contribute to the project
-Welcome to those who want to contribute. I am currently alone in carrying out my project.
+Welcome to those who want to contribute. I am currently alone in carrying out my project. If you want to contribute to the project, you are welcome to do so on condition that you inform me and respect the license.
 This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
 
 # Version
