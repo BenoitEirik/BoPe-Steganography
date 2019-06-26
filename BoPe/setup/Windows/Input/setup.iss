@@ -5,7 +5,7 @@
 #define MyAppVersion "1.0"
 #define MyAppPublisher "Benoit Eirik."
 #define MyAppURL "https://github.com/BenoitEirik/BoPe-Steganography"
-#define MyAppExeName "MyProg.exe"
+#define MyAppExeName "BoPe.exe"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -21,15 +21,15 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={autopf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
-LicenseFile=D:\Program Files\Dev\github\BoPe-Steganography\BoPe\setup\Windows\Input\licence.txt
-InfoBeforeFile=D:\Program Files\Dev\github\BoPe-Steganography\BoPe\setup\Windows\Input\before.txt
-InfoAfterFile=D:\Program Files\Dev\github\BoPe-Steganography\BoPe\setup\Windows\Input\after.txt
+LicenseFile=licence.txt
+InfoBeforeFile=before.txt
+InfoAfterFile=after.txt
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
-OutputDir=D:\Program Files\Dev\github\BoPe-Steganography\BoPe\setup\Windows\Output
-OutputBaseFilename=mysetup
-SetupIconFile=D:\Program Files\Dev\github\BoPe-Steganography\BoPe\setup\Windows\Input\BoPe.ico
+OutputDir=..\Output
+OutputBaseFilename=setup-BoPe
+SetupIconFile=BoPe.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -42,8 +42,8 @@ Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "D:\Program Files\Dev\github\BoPe-Steganography\BoPe\setup\Windows\Input\MyProg.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Program Files\Dev\github\BoPe-Steganography\BoPe\setup\Windows\Input\other_files.rtf"; DestDir: "{app}"; Flags: ignoreversion
+Source: "MyProg.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "other_files.rtf"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
