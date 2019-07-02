@@ -5,13 +5,13 @@
 #define MyAppVersion "1.0"
 #define MyAppPublisher "Benoit Eirik."
 #define MyAppURL "http://www.example.com/"
-#define MyAppExeName "MyProg.exe"
+#define MyAppExeName "BoPe.exe"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{83DF34F1-F0B0-45BF-B881-78FDD2B8D419}
+AppId={{2E12C9E3-B82D-4BB2-9EB0-F6B704BCF9F1}}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -19,12 +19,13 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-DefaultDirName={pf}\BoPe Steganography
+DefaultDirName={autopf}\BoPe Steganography
 DefaultGroupName={#MyAppName}
 LicenseFile=D:\Program Files\Dev\github\BoPe-Steganography\BoPe\setup\Windows\Input\licence.txt
 OutputDir=D:\Program Files\Dev\github\BoPe-Steganography\BoPe\setup\Windows\Output
 OutputBaseFilename=setup-BoPe
 SetupIconFile=BoPe.ico
+UninstallDisplayIcon={app}\BoPe-uninstall.ico
 Compression=lzma
 SolidCompression=yes
 DisableWelcomePage=False
@@ -33,7 +34,6 @@ WizardSmallImageFile=BoPe-setup-small.bmp
 VersionInfoVersion=1.0
 VersionInfoCompany=Benoit Eirik
 Uninstallable=yes
-UninstallDisplayIcon=BoPe-uninstall.ico
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -43,16 +43,10 @@ Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-; Add the ISSkin DLL used for skinning Inno Setup installations.
-Source: "D:\Program Files\ISSkin\ISSkinU.dll"; DestDir: {tmp}; Flags: dontcopy
-
-; Add the Visual Style resource containing the resources used for skinning,
-; you can also use Microsoft Visual Styles (*.msstyles) resources.
-Source: "D:\Program Files\Inno Script Studio\Styles\Luxor.cjstyles"; DestDir: {tmp}; Flags: dontcopy
-
-Source: "MyProg.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "build\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\..\..\build\Windows\BoPe.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\..\build\Windows\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
+Source: "C:\Windows\Fonts\calibri.ttf"; DestDir: "{fonts}"; FontInstall: "Calibri"; Flags: onlyifdoesntexist uninsneveruninstall
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
@@ -61,30 +55,28 @@ Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
+[Registry]
+Root: HKLM; SubKey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment\"; ValueType:string; ValueName: "Path"; ValueData: "{reg:HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\,Path};{app}"
+
 [Code]
-// Importing LoadSkin API from ISSkinU.dll
-procedure LoadSkin(lpszPath: String; lpszIniFileName: String);
-external 'LoadSkin@files:ISSkinU.dll stdcall';
-
-// Importing UnloadSkin API from ISSkinU.dll
-procedure UnloadSkin();
-external 'UnloadSkin@files:ISSkinU.dll stdcall';
-
-// Importing ShowWindow Windows API from User32.DLL
-function ShowWindow(hWnd: Integer; uType: Integer): Integer;
-external 'ShowWindow@user32.dll stdcall';
-
-function InitializeSetup(): Boolean;
+// Delete environment variable
+procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
+var
+  Path, AppDir: string;
+  Index: Integer;
 begin
-  ExtractTemporaryFile('Luxor.cjstyles');
-  LoadSkin(ExpandConstant('{tmp}\Luxor.cjstyles'), 'normalmystyle.ini');
-  Result := True;
-end;
-
-procedure DeinitializeSetup();
-begin
-  // Hide Window before unloading skin so user does not get
-  // a glimpse of an unskinned window before it is closed.
-  ShowWindow(StrToInt(ExpandConstant('{wizardhwnd}')), 0);
-  UnloadSkin();
+  if CurUninstallStep = usUninstall then
+  begin
+    if RegQueryStringValue(HKEY_LOCAL_MACHINE,
+      'SYSTEM\CurrentControlSet\Control\Session Manager\Environment\',
+      'Path', Path) then
+    begin
+      AppDir := ExpandConstant('{app}');
+      Index := Pos(AppDir, Path);
+      Delete(Path, Index-1, Length(AppDir)+1);
+      RegWriteStringValue(HKEY_LOCAL_MACHINE,
+        'SYSTEM\CurrentControlSet\Control\Session Manager\Environment\',
+        'Path', Path);
+    end;
+  end;
 end;
