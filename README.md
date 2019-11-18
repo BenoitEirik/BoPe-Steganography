@@ -5,8 +5,8 @@
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
 
 
-BoPe is a cross-platform steganography software (Linux, Windows & MacOS). It is intended for all audiences wishing to store digital information in an image. Currently, only BMP files are supported.
-This project is basically a work done in engineering school that I want to improve. Steganography is an uncommon but powerful practice that I would like to share with the most curious.
+BoPe is a cross-platform steganography software (Linux, Windows, MacOS, Android & iOS). It is intended for all audiences wishing to store digital information in an image. Currently, only BMP files are supported.
+Steganography is an uncommon but powerful practice that I would like to share with the most curious.
 
 # GUI Prototype
 <img src="https://user-images.githubusercontent.com/33329690/60122422-7885f400-9785-11e9-9616-828bdd2eeb6c.png">
@@ -17,12 +17,6 @@ My goal is to make the art of steganography accessible to everyone and thus no l
 
 # Programming language and libraries
 - The C language and its standard library (C18 version)
-- The SDL Library (GUI)
-- CMake (MakeFile generator)
+- Qt 5.12 (GUI)
 
-# Contribute to the project
-Welcome to those who want to contribute. I am currently alone in carrying out my project. If you want to contribute to the project, you are welcome to do so on condition that you inform me and respect the license.
-This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
-
-# Version
-No version has been released yet. You will soon be able to compile the source code.
+Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
