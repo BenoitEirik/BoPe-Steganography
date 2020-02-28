@@ -1,6 +1,6 @@
 # BoPe Steganography
 
-<center><img src="https://user-images.githubusercontent.com/33329690/60058471-cef12500-96e8-11e9-82c1-eb570144e95d.png" width="400"></center>
+<img src="https://user-images.githubusercontent.com/33329690/60058471-cef12500-96e8-11e9-82c1-eb570144e95d.png" width="400">
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
 
